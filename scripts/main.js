@@ -36,10 +36,12 @@ function drawCircle() {
 		let y = raio * Math.sin(angulo);
 
 		// Aplicar escala
-		// FAZER
+		x *= scaleX;
+		y *= scaleY;
 
 		// Aplicar rotação em torno do ponto central
-		// FAZER
+		const rotatedX = centerX + (x * Math.cos(rotation) - y * Math.sin(rotation));
+		const rotatedY = centerY + (x * Math.sin(rotation) + y * Math.cos(rotation));
 
 		if (i === 0) {
 			ctx.moveTo(rotatedX, rotatedY);
