@@ -36,12 +36,10 @@ function drawCircle() {
 		let y = raio * Math.sin(angulo);
 
 		// Aplicar escala
-		x *= scaleX;
-		y *= scaleY;
+		// FAZER
 
 		// Aplicar rotação em torno do ponto central
-		const rotatedX = centerX + (x * Math.cos(rotation) - y * Math.sin(rotation));
-		const rotatedY = centerY + (x * Math.sin(rotation) + y * Math.cos(rotation));
+		// FAZER
 
 		if (i === 0) {
 			ctx.moveTo(rotatedX, rotatedY);
@@ -63,6 +61,9 @@ function drawCircle() {
 }
 
 drawCircle();
+
+
+// Evento de listener para redimensionar o canvas
 
 window.addEventListener("resize", () => {
 	canvas.width = window.innerWidth;
