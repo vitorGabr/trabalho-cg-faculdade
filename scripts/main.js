@@ -72,3 +72,11 @@ window.addEventListener("resize", () => {
 	canvas.height = window.innerHeight;
 	drawCircle();
 });
+
+// Evento de translação
+const translateInput = document.getElementById("translate");
+
+translateInput.addEventListener("input", () => {
+	translateX = Number.parseInt(translateInput.value);
+	drawCircle();
+});
