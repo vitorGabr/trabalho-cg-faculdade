@@ -77,6 +77,6 @@ window.addEventListener("resize", () => {
 const translateInput = document.getElementById("translate");
 
 translateInput.addEventListener("input", () => {
-	translateX = Number.parseInt(translateInput.value);
+	translateX = Number(translateInput.value);
 	drawCircle();
 });
