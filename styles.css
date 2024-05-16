@@ -33,7 +33,7 @@ canvas {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    width: 200px;
+    width: 300px;
     gap: 20px;
     background-color: #e6e6e6;
 }
@@ -47,7 +47,26 @@ canvas {
 .transformation {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    width: 100%;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
+}
+
+.transformation label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #525252;
+}
+
+#reset {
+    background-color: #3659f4;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 100%;
 }

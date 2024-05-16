@@ -3,7 +3,7 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
 // Define as dimensões do canvas
-canvas.width = window.innerWidth - 200;
+canvas.width = window.innerWidth - 300;
 canvas.height = window.innerHeight;
 
 // Defina o raio do círculo
@@ -11,7 +11,7 @@ const raio = 70;
 
 let numPontos = 3;
 let translateX = 0;
-const translateY = 0;
+let translateY = 0;
 let scaleX = 1;
 let scaleY = 1;
 let rotation = 0;
@@ -63,9 +63,3 @@ function drawCircle() {
 }
 
 drawCircle();
-
-window.addEventListener("resize", () => {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	drawCircle();
-});
