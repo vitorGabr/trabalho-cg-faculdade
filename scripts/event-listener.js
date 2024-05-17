@@ -30,12 +30,15 @@ resetButton.addEventListener('click', function() {
     translateY = 0;
     scaleX = 1;
     scaleY = 1;
+    shearX = 0;
+    shearY = 0;
     rotation = 0;
 
     translateInput.value = 0;
     range.value = 3;
     scaleInput.value = 1;
     rotateInput.value = 0;
+    shearInput.value = 0;
 
     drawCircle();
 });

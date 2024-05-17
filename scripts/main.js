@@ -15,51 +15,61 @@ let translateY = 0;
 let scaleX = 1;
 let scaleY = 1;
 let rotation = 0;
+let shearX = 0;
+let shearY = 0;
 
 function drawCircle() {
-	// Limpe o canvas
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Limpe o canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	// Comece o caminho do desenho
-	ctx.beginPath();
+    // Salva o estado atual do contexto
+    ctx.save();
 
-	// Calcule o ponto central do círculo
-	const centerX = canvas.width / 2 + translateX;
-	const centerY = canvas.height / 2 + translateY;
+    // Translade para o ponto central do canvas com a translação aplicada
+    const centerX = canvas.width / 2 + translateX;
+    const centerY = canvas.height / 2 + translateY;
+    ctx.translate(centerX, centerY);
 
-	// Desenhe os pontos do círculo aplicando todas as transformações em torno do ponto central
-	for (let i = 0; i < numPontos; i++) {
-		const angulo = ((i / numPontos) * 2 * Math.PI) + rotation;
+    // Aplica a rotação ao contexto
+    ctx.rotate(rotation);
 
-		// Calcule as coordenadas do ponto antes de aplicar qualquer transformação
-		let x = raio * Math.cos(angulo);
-		let y = raio * Math.sin(angulo);
+    // Aplica a escala ao contexto
+    ctx.scale(scaleX, scaleY);
 
-		// Aplicar escala
-		x *= scaleX;
-		y *= scaleY;
+    // Aplica o cisalhamento ao contexto (shear)
+    ctx.transform(1, shearY, shearX, 1, 0, 0);
 
-		// Aplicar rotação em torno do ponto central
-		const rotatedX = centerX + (x * Math.cos(rotation) - y * Math.sin(rotation));
-		const rotatedY = centerY + (x * Math.sin(rotation) + y * Math.cos(rotation));
+    // Comece o caminho do desenho
+    ctx.beginPath();
 
-		if (i === 0) {
-			ctx.moveTo(rotatedX, rotatedY);
-		} else {
-			ctx.lineTo(rotatedX, rotatedY);
-		}
-	}
+    // Desenhe os pontos do círculo no espaço transformado
+    for (let i = 0; i < numPontos; i++) {
+        const angulo = (i / numPontos) * 2 * Math.PI;
 
-	// Feche o caminho
-	ctx.closePath();
+        // Calcule as coordenadas do ponto no círculo unitário
+        const x = raio * Math.cos(angulo);
+        const y = raio * Math.sin(angulo);
 
-	// Preencha o círculo
-	ctx.fillStyle = "lightblue";
-	ctx.fill();
+        if (i === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    }
 
-	// Desenhe o círculo
-	ctx.strokeStyle = "blue";
-	ctx.stroke();
+    // Feche o caminho
+    ctx.closePath();
+
+    // Preencha o círculo
+    ctx.fillStyle = "lightblue";
+    ctx.fill();
+
+    // Desenhe o círculo
+    ctx.strokeStyle = "blue";
+    ctx.stroke();
+
+    // Restaura o estado do contexto para o original (antes das transformações)
+    ctx.restore();
 }
 
 drawCircle();

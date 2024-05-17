@@ -35,3 +35,12 @@ rotateInput.addEventListener("input", () => {
 	rotation = Number.parseInt(rotateInput.value) * (Math.PI / 180);
 	drawCircle();
 })
+
+// Adicione um evento de input ao elemento de entrada de cisalhamento
+
+const shearInput = document.getElementById("shear");
+
+shearInput.addEventListener("input", () => {
+	shearX = Number.parseInt(shearInput.value);
+	drawCircle();
+})
